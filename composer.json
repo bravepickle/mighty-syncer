@@ -1,0 +1,19 @@
+{
+    "name": "bravepickle/mighty-syncer",
+    "description": "Sync data between endpoints via various APIs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Victor K",
+            "email": "2bravepickle@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
