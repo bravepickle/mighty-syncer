@@ -214,14 +214,14 @@ abstract class DatabaseImporter extends AbstractImporter
         $queryBuilder = $conn->createQueryBuilder();
 
         if ($lastSyncDate === null) {
-            $queryBuilder->insert(self::TABLE_SYNC)
+            $queryBuilder->insert(static::TABLE_SYNC)
                 ->values([
                     'title' => $conn->quote($this->genSyncName($name)),
                     'date' => $conn->quote(new DateTime(), Types::DATETIME_MUTABLE),
                 ])
             ;
         } else {
-            $queryBuilder->update(self::TABLE_SYNC)
+            $queryBuilder->update(static::TABLE_SYNC)
                 ->set('date', $conn->quote(new DateTime(), Types::DATETIME_MUTABLE))
                 ->where(
                     $queryBuilder->expr()->eq('title', $conn->quote($this->genSyncName($name)))
@@ -306,7 +306,7 @@ abstract class DatabaseImporter extends AbstractImporter
     {
         if (!array_key_exists($name, $this->lastSyncDates)) {
             $syncDate = $this->getTargetConnection()
-                ->executeQuery('SELECT `date` FROM ' . self::TABLE_SYNC .
+                ->executeQuery('SELECT `date` FROM ' . static::TABLE_SYNC .
                     ' WHERE `title` = :name LIMIT 1', ['name' => $this->genSyncName($name)])
                 ->fetchColumn()
             ;
@@ -337,7 +337,7 @@ abstract class DatabaseImporter extends AbstractImporter
      */
     protected function initTemporaryTable(string $table, Connection $conn, EntityOptions $options): array
     {
-        $rawTmpTable = self::TMP_TABLE_PREFIX . $table;
+        $rawTmpTable = static::TMP_TABLE_PREFIX . $table;
         $tmpTable = $conn->quoteIdentifier($rawTmpTable);
         $conn->executeQuery("DROP TABLE IF EXISTS $tmpTable");
 
