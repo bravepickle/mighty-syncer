@@ -80,7 +80,7 @@ class SoftDeleteEntityProcessor extends EntityProcessor
 
     /**
      * @return int
-     * @throws DBAL\Exception
+     * @throws DBAL\DBALException|DBAL\Exception
      */
     protected function delete(): int
     {

@@ -227,14 +227,14 @@ abstract class AbstractApiImporter extends AbstractImporter
         $queryBuilder = $conn->createQueryBuilder();
 
         if ($lastSyncDate === null) {
-            $queryBuilder->insert(self::TABLE_SYNC)
+            $queryBuilder->insert(static::TABLE_SYNC)
                 ->values([
                     'title' => $conn->quote($this->genSyncName($name)),
                     'date' => $conn->quote(new DateTime(), Types::DATE_MUTABLE),
                 ])
             ;
         } else {
-            $queryBuilder->update(self::TABLE_SYNC)
+            $queryBuilder->update(static::TABLE_SYNC)
                 ->set('date', $conn->quote(new DateTime(), Types::DATE_MUTABLE))
                 ->where(
                     $queryBuilder->expr()->eq('title', $conn->quote($this->genSyncName($name)))
@@ -304,7 +304,7 @@ abstract class AbstractApiImporter extends AbstractImporter
     {
         if (!array_key_exists($name, $this->lastSyncDates)) {
             $syncDate = $this->getTargetConnection()
-                ->executeQuery('SELECT `date` FROM ' . self::TABLE_SYNC .
+                ->executeQuery('SELECT `date` FROM ' . static::TABLE_SYNC .
                     ' WHERE `title` = :name LIMIT 1', ['name' => $this->genSyncName($name)])
                 ->fetchColumn()
             ;
@@ -335,7 +335,7 @@ abstract class AbstractApiImporter extends AbstractImporter
      */
     protected function initTemporaryTable(string $table, Connection $conn, EntityOptions $options): array
     {
-        $rawTmpTable = self::TMP_TABLE_PREFIX . $table;
+        $rawTmpTable = static::TMP_TABLE_PREFIX . $table;
         $tmpTable = $conn->quoteIdentifier($rawTmpTable);
         $conn->executeQuery("DROP TABLE IF EXISTS $tmpTable");
 
@@ -362,14 +362,14 @@ abstract class AbstractApiImporter extends AbstractImporter
      * @return int|void
      * @throws DBAL\DBALException|DBAL\Exception
      */
-    protected function dropExtraColumns($table, Connection $conn, EntityOptions $options)
+    protected function dropExtraColumns(string $table, Connection $conn, EntityOptions $options): int
     {
         $stmt = $conn->executeQuery('DESCRIBE ' . $table);
         $drops = [];
 
         while ($row = $stmt->fetch()) {
-            if (!in_array($row[self::DESC_FIELD], $options->mapping, true)) {
-                $drops[] = $row[self::DESC_FIELD];
+            if (!in_array($row[static::DESC_FIELD], $options->mapping, true)) {
+                $drops[] = $row[static::DESC_FIELD];
             }
         }
 

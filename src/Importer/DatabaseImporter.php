@@ -363,16 +363,17 @@ abstract class DatabaseImporter extends AbstractImporter
      * @param Connection $conn
      * @param EntityOptions $options
      * @return int|void
-     * @throws DBAL\DBALException|DBAL\Exception
+     * @throws DBAL\DBALException
+     * @throws DBAL\Exception
      */
-    protected function dropExtraColumns($table, Connection $conn, EntityOptions $options): int
+    protected function dropExtraColumns(string $table, Connection $conn, EntityOptions $options): int
     {
         $stmt = $conn->executeQuery('DESCRIBE ' . $table);
         $drops = [];
 
         while ($row = $stmt->fetch()) {
-            if (!in_array($row[self::DESC_FIELD], $options->mapping, true)) {
-                $drops[] = $row[self::DESC_FIELD];
+            if (!in_array($row[static::DESC_FIELD], $options->mapping, true)) {
+                $drops[] = $row[static::DESC_FIELD];
             }
         }
 
