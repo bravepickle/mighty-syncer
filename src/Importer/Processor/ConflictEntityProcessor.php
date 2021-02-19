@@ -2,7 +2,7 @@
 
 namespace MightySyncer\Importer\Processor;
 
-use MightySyncer\EventListener\Importer\EntityProcessorEvent;
+use MightySyncer\Event\Importer\EntityProcessorEvent;
 use MightySyncer\Exception\ImportAbortedException;
 use MightySyncer\Exception\ImportException;
 use MightySyncer\Importer\Options\EntityOptions;

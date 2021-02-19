@@ -4,9 +4,9 @@ namespace MightySyncer\Importer;
 
 use Doctrine\DBAL\Types\Types;
 use MightySyncer\Entity\EntityNode;
-use MightySyncer\EventListener\Importer\EntityAffectedEvent;
-use MightySyncer\EventListener\Importer\EntityEvent;
-use MightySyncer\EventListener\Importer\EntityExceptionEvent;
+use MightySyncer\Event\Importer\EntityAffectedEvent;
+use MightySyncer\Event\Importer\EntityEvent;
+use MightySyncer\Exception\EntityExceptionEvent;
 use MightySyncer\Exception\ImportAbortedException;
 use MightySyncer\Importer\Options\ImportOptions;
 use MightySyncer\Importer\Processor\ConflictEntityProcessor;

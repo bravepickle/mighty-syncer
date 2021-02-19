@@ -3,7 +3,7 @@
 namespace MightySyncer\Importer\Processor;
 
 use Doctrine\DBAL;
-use MightySyncer\EventListener\Importer\EntityProcessorEvent;
+use MightySyncer\Event\Importer\EntityProcessorEvent;
 use MightySyncer\Exception\ImportException;
 use MightySyncer\Importer\Options\EntityOptions;
 

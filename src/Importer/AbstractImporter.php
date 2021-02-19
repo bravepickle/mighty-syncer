@@ -3,7 +3,7 @@
 namespace MightySyncer\Importer;
 
 
-use MightySyncer\EventListener\AbstractEvent;
+use MightySyncer\Event\AbstractEvent;
 use MightySyncer\Exception\ImportException;
 use MightySyncer\Importer\Options\ImportOptions;
 use MightySyncer\Entity\EntityNode;

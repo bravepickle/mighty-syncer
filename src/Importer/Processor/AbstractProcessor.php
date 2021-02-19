@@ -2,7 +2,7 @@
 
 namespace MightySyncer\Importer\Processor;
 
-use MightySyncer\EventListener\AbstractEvent;
+use MightySyncer\Event\AbstractEvent;
 use MightySyncer\Exception\ImportException;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;

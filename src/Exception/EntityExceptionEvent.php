@@ -1,9 +1,9 @@
 <?php
 
-namespace MightySyncer\EventListener\Importer;
+namespace MightySyncer\Exception;
 
 use Exception;
-use MightySyncer\EventListener\AbstractEvent;
+use MightySyncer\Event\AbstractEvent;
 use MightySyncer\Importer\Options\EntityOptions;
 
 /**

@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUndefinedClassInspection */
 
-namespace MightySyncer\EventListener;
+namespace MightySyncer\Event;
 
 
 use Symfony\Contracts\EventDispatcher\Event;

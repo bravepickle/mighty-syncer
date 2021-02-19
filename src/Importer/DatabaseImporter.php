@@ -3,9 +3,9 @@
 namespace MightySyncer\Importer;
 
 use MightySyncer\Entity\EntityNode;
-use MightySyncer\EventListener\Importer\EntityAffectedEvent;
-use MightySyncer\EventListener\Importer\EntityEvent;
-use MightySyncer\EventListener\Importer\EntityExceptionEvent;
+use MightySyncer\Event\Importer\EntityAffectedEvent;
+use MightySyncer\Event\Importer\EntityEvent;
+use MightySyncer\Exception\EntityExceptionEvent;
 use MightySyncer\Exception\ImportAbortedException;
 use MightySyncer\Importer\Options\ImportOptions;
 use MightySyncer\Importer\Processor\ConflictEntityProcessor;
@@ -365,7 +365,7 @@ abstract class DatabaseImporter extends AbstractImporter
      * @return int|void
      * @throws DBAL\DBALException|DBAL\Exception
      */
-    protected function dropExtraColumns($table, Connection $conn, EntityOptions $options)
+    protected function dropExtraColumns($table, Connection $conn, EntityOptions $options): int
     {
         $stmt = $conn->executeQuery('DESCRIBE ' . $table);
         $drops = [];
@@ -623,5 +623,4 @@ abstract class DatabaseImporter extends AbstractImporter
             $conditions[] = '(' . $cond . ')'; // fingers crossed
         }
     }
-
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace MightySyncer\EventListener\Importer;
+namespace MightySyncer\Event\Importer;
 
 
-use MightySyncer\EventListener\AbstractEvent;
+use MightySyncer\Event\AbstractEvent;
 use MightySyncer\Importer\Options\EntityOptions;
 
 /**
@@ -12,11 +12,11 @@ use MightySyncer\Importer\Options\EntityOptions;
  */
 class EntityAffectedEvent extends AbstractEvent
 {
-    public const NAME_CONFLICT = 'mighty_syncer.entity_processor.affected.conflict';
-    public const NAME_UPDATE = 'mighty_syncer.entity_processor.affected.update';
-    public const NAME_DELETE = 'mighty_syncer.entity_processor.affected.delete';
-    public const NAME_SOFT_DELETE = 'mighty_syncer.entity_processor.affected.soft_delete';
-    public const NAME_INSERT = 'mighty_syncer.entity_processor.affected.insert';
+    public const NAME_CONFLICT = 'mighty_syncer.entity_affected.conflict';
+    public const NAME_UPDATE = 'mighty_syncer.entity_affected.update';
+    public const NAME_DELETE = 'mighty_syncer.entity_affected.delete';
+    public const NAME_SOFT_DELETE = 'mighty_syncer.entity_affected.soft_delete';
+    public const NAME_INSERT = 'mighty_syncer.entity_affected.insert';
 
     /**
      * @var int|null
