@@ -378,7 +378,7 @@ abstract class DatabaseImporter extends AbstractImporter
         }
 
         if (!$drops) {
-            return; // nothing to do
+            return 0; // nothing to do
         }
 
         $sql = 'ALTER TABLE ' . $table . ' DROP COLUMN ' . implode(', DROP COLUMN ', $drops);
